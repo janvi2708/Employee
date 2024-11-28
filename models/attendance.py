@@ -15,7 +15,8 @@ class Empattendance(models.Model):
     employee_name_id = fields.Many2one("hr.employee",string="Employee",required=True)
     check_in_time = fields.Datetime(string="Check In",required=True)
     check_out_time = fields.Datetime(string="Check out")
-    total_hours = fields.Float(string="Total hours",compute="_compute_total_hours",store=True)
+    total_hours = fields.Float(string="Total hours",compute="_compute_total_hours",store=False)
+    name=fields.Char(string="name")
   
 
     @api.depends('check_in_time', 'check_out_time')
