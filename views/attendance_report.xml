@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+	<record id="report_attendance" model="ir.actions.report">
+		<field name="name">Attendance</field>
+		<field name="model">emp.attendance</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">emp_attendance.emp_attendance_report</field>
+		<field name="report_file">report_attendance</field>
+		<field name="binding_model_id" ref="model_emp_attendance"/>
+		<field name="binding_type">report</field>
+        <field name="attachment"/>
+	</record>
+
+	<template id="emp_attendance_report">
+        <t t-call="web.html_container">         
+                <t t-call="web.external_layout">
+					<div class="page">
+                    	<h1 style="text-align: center;">Attendance Report</h1>
+						<table style="border: 1px solid black; width: 100%;" >
+                        	<tr>
+                                <td style="border: 1px solid black;" >Employee Name</td>
+								<td style="border: 1px solid black;" >Check_In</td>
+								<td style="border: 1px solid black;" >check_out</td>
+								<td style="border: 1px solid black;" >Total hours</td>
+                               
+                            </tr>
+							 <t t-foreach="docs" t-as="o">
+                            	<tr>
+									<td style="border: 1px solid black;"  ><span t-esc="o.employee_name_id.name"/></td>
+									<td style="border: 1px solid black;" ><span t-esc="o.check_in_time"/></td>
+									<td style="border: 1px solid black;" ><span t-esc="o.check_out_time"/></td>
+									<td style="border: 1px solid black;"><span t-esc="o.total_hours"/></td>
+                            	</tr>
+							</t>
+                    	</table>
+						  
+                    </div>
+    	    </t>
+    	</t>           
+    </template>
+ 
+</odoo>
+

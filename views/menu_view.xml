@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  
+
+    <!-- attendance menu -->
+    <menuitem id="menu_Attendance"
+              name="Attendance"
+              parent="hr.menu_hr_employee_payroll"
+              action="emp_attendance_action"
+              sequence='2'/>
+
+    
+    
+
+
+
+    
+</odoo>

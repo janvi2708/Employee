@@ -1,0 +1,30 @@
+<odoo>
+    <record id="email_template_data_display" model="mail.template">
+        <field name="name">Employee Reminder</field>
+        <field name="model_id" ref="emp_attendance.model_emp_attendance"/>
+        <field name="email_from">{{ (user.company_id.email_formatted or user.email_formatted) }}</field>
+        <field name="subject">Email reminder for No checkout user.</field>
+        <field name="description">Sent to Employee with their attendance report attachment</field>
+        <field name="body_html" type="html">
+ <div style="margin: 0px; padding: 0px;">
+        <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                    Dear<td><span t-field="object.employee_name_id" /></td><br/><br/>
+                    
+                     Just a friendly reminder that we should all aim to complete our standard working hours on a daily basis. This consistency is key to our team's success and helps keep everything running smoothly. If you're facing any challenges in meeting this, please feel free to reach out for support. Thanks for your understanding and cooperation! 
+                    
+                    <!-- <t t-if="object.total_hours">
+                         <span style="font-weight:bold;" t-out="object.total_hours or ''"></span>
+                    </t> -->
+                     <!-- Today's Check out time was
+                    <t t-if="object.check_out">
+                    </t>
+                    Total hours
+                    <t t-if="object.total_hours">
+                    </t> -->
+        </p>
+ </div>
+        </field>
+        <!-- <field name="report_template_ids" eval="[(4, ref('emp_attendance.report_attendance'))]"/> -->
+        
+    </record>
+</odoo>
